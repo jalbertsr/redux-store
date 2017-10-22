@@ -1,9 +1,9 @@
 {
-  "name": "webpack-react-babel-v2",
+  "name": "redux-ecommerce",
   "version": "1.0.0",
-  "description": "webpack react configuration",
+  "description": "React & redux e-commerce store",
   "main": "index.js",
-  "repository": "https://github.com/jalbertsr/webpack-v2-config-react-boilerplate.git",
+  "repository": "https://github.com/jalbertsr/redux-store.git",
   "author": "Joan Albert Segura <jalbertsr@protonmail.ch>",
   "license": "MIT",
   "devDependencies": {
@@ -20,6 +20,7 @@
     "webpack": "2.2.1"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "redux": "3.0.2",

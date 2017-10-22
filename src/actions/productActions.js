@@ -48,3 +48,52 @@ export function saveProductFailure (error) {
     payload: error
   }
 }
+
+// Action creators (Async)
+export function fetchProducts () {
+  return async (dispatch => {
+    dispatch(() => {
+      return {
+        type: 'FETCH_PRODUCT_IIT'
+      }
+    })
+    try {
+      const data = await API.products.getAll()
+      return dispatch(fetchProductsSuccess(data.products))
+    } catch (error) {
+      return dispatch(fetchProductsFailure(error))
+    }
+  })
+}
+
+export function fetchProduct (productId) {
+  return sync (dispatch => {
+    dispatch(() => {
+      return {
+        type: 'FETCH_PRODUCT_INIT'
+      }
+    })
+    try {
+      const data = await API.products.getSingle(productId)
+      return dispatch(fetchProductSuccess(data.product))
+    } catch (error) {
+      return dispatch(fetchProductFailure(error))
+    }
+  })
+}
+
+export function saveProduct (product) {
+  return async (dispatch => {
+    dispatch(() => {
+      return {
+        type: 'SAVE_PRODUCT_INIT'
+      }
+    })
+    try {
+      await API.products.save(product)
+      return disptach(saveProductSucces())
+    } catch (error) {
+      return dispatch(saveProductFailure(error))
+    }
+  })
+}
