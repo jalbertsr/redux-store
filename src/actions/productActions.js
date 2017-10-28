@@ -1,10 +1,12 @@
 import {
+  FETCH_PRODUCT_INIT,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILURE,
   SAVE_PRODUCT_SUCCESS,
-  SAVE_PRODUCT_FAILURE
+  SAVE_PRODUCT_FAILURE,
+  SAVE_PRODUCT_INIT
 } from './types'
 
 export function fetchProductSuccess (products) {
@@ -54,7 +56,7 @@ export function fetchProducts () {
   return async (dispatch => {
     dispatch(() => {
       return {
-        type: 'FETCH_PRODUCT_IIT'
+        type: FETCH_PRODUCT_INIT
       }
     })
     try {
@@ -70,7 +72,7 @@ export function fetchProduct (productId) {
   return sync (dispatch => {
     dispatch(() => {
       return {
-        type: 'FETCH_PRODUCT_INIT'
+        type: FETCH_PRODUCT_INIT
       }
     })
     try {
@@ -86,7 +88,7 @@ export function saveProduct (product) {
   return async (dispatch => {
     dispatch(() => {
       return {
-        type: 'SAVE_PRODUCT_INIT'
+        type: SAVE_PRODUCT_INIT
       }
     })
     try {
