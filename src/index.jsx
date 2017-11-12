@@ -5,7 +5,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
 
-import 'boostrap/dist/css/boostrap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 
 import routes from './routes'
 import configureStore from './store/configureStore'

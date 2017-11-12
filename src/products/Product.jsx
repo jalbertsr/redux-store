@@ -9,8 +9,8 @@ category }) => (
       <Link to={`/details/${_id}`}>
         <img
           className='card.img-top'
-          width='100%' src={`${image}`}
-          alt={`${description}`}
+          width='100%' src={image}
+          alt={description}
         />
       </Link>
       <div className='card-block'>

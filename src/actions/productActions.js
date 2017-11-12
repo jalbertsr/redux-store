@@ -8,6 +8,7 @@ import {
   SAVE_PRODUCT_FAILURE,
   SAVE_PRODUCT_INIT
 } from './types'
+import API from '../services/dataService'
 
 export function fetchProductSuccess (products) {
   return {
@@ -23,7 +24,7 @@ export function fetchProductsFailure (error) {
   }
 }
 
-export function fetchProductSucces (product) {
+export function fetchProductsSucces (product) {
   return {
     type: FETCH_PRODUCT_SUCCESS,
     payload: product
@@ -37,7 +38,7 @@ export function fetchProductFailure (error) {
   }
 }
 
-export function saveProductSucces (product) {
+export function saveProductsSucces (product) {
   return {
     type: SAVE_PRODUCT_SUCCESS,
     payload: product
@@ -53,7 +54,7 @@ export function saveProductFailure (error) {
 
 // Action creators (Async)
 export function fetchProducts () {
-  return async (dispatch => {
+  return async (dispatch) => {
     dispatch(() => {
       return {
         type: FETCH_PRODUCT_INIT
@@ -61,15 +62,15 @@ export function fetchProducts () {
     })
     try {
       const data = await API.products.getAll()
-      return dispatch(fetchProductsSuccess(data.products))
+      return dispatch(saveProductsSucces(data.products))
     } catch (error) {
       return dispatch(fetchProductsFailure(error))
     }
-  })
+  }
 }
 
 export function fetchProduct (productId) {
-  return sync (dispatch => {
+  return async (dispatch) => {
     dispatch(() => {
       return {
         type: FETCH_PRODUCT_INIT
@@ -81,11 +82,11 @@ export function fetchProduct (productId) {
     } catch (error) {
       return dispatch(fetchProductFailure(error))
     }
-  })
+  }
 }
 
 export function saveProduct (product) {
-  return async (dispatch => {
+  return async (dispatch) => {
     dispatch(() => {
       return {
         type: SAVE_PRODUCT_INIT
@@ -93,9 +94,9 @@ export function saveProduct (product) {
     })
     try {
       await API.products.save(product)
-      return disptach(saveProductSucces())
+      return dispatch(saveProductSucces())
     } catch (error) {
       return dispatch(saveProductFailure(error))
     }
-  })
+  }
 }
