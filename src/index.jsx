@@ -5,9 +5,11 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
 
+import 'boostrap/dist/css/boostrap.css'
+
 import routes from './routes'
 import configureStore from './store/configureStore'
-import initialState from './reducer/initialState'
+import initialState from './reducers/initialState'
 
 const store = configureStore(initialState)
 const history = syncHistoryWithStore(browserHistory, store)

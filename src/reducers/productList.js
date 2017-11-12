@@ -9,7 +9,7 @@ import {
 
 import initialState from './initialState'
 
-export default functionListReducer (state = initialState.productList, action) {
+export default function ListReducer (state = initialState.productList, action) {
   switch (action.type) {
     case FETCH_PRODUCT_INIT:
       return {
@@ -17,7 +17,7 @@ export default functionListReducer (state = initialState.productList, action) {
         loading: true,
         error: null
       }
-    case FETH_PRODUCTS_FAILURE:
+    case FETCH_PRODUCTS_FAILURE:
       return {
         ...state,
         products: [],
@@ -46,7 +46,7 @@ export default functionListReducer (state = initialState.productList, action) {
     case SAVE_PRODUCT_SUCCESS:
       return {
         ...state,
-        products:[...state.products, ...action.payload],
+        products: [...state.products, ...action.payload],
         error: null,
         loading: false
       }
