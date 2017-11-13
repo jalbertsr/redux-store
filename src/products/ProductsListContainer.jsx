@@ -5,13 +5,12 @@ import PropType from 'prop-types'
 
 import ProductList from './ProductList'
 import * as productActions from '../actions/productActions'
+import * as cartActions from '../actions/cardActions'
 
 class ProductListContainer extends Component {
   constructor (props, context) {
     super(props, context)
-    this.state = {
-
-    }
+    this.handleOnAddItem = this.handleOnAddItem.bind(this)
   }
 
   componentDidMount () {
@@ -22,12 +21,17 @@ class ProductListContainer extends Component {
     await this.props.productActions.fetchProducts()
   }
 
+  handleOnAddItem (item) {
+    this.props.cartActions.addCartItem(item)
+  }
+
   render () {
     return (
       <div>
         <ProductList
           loading={this.props.loading}
           products={this.props.products}
+          onAddItem={this.handleOnAddItem}
         />
       </div>
     )
@@ -40,7 +44,8 @@ ProductListContainer.defaultProps = {
 ProductListContainer.propTypes = {
   products: PropType.arrayOf(PropType.object),
   loading: PropType.bool.isRequired,
-  productActions: PropType.objectOf(PropType.func).isRequired
+  productActions: PropType.objectOf(PropType.func).isRequired,
+  cartActions: PropType.objectOf(PropType.func).isRequired
 }
 
 function mapStateToProps (state) {
@@ -52,7 +57,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    productActions: bindActionCreators(productActions, dispatch)
+    productActions: bindActionCreators(productActions, dispatch),
+    cartActions: bindActionCreators(cartActions, dispatch)
   }
 }
 

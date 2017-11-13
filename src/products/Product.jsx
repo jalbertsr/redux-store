@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 
 const Product = ({ _id, name, description, image, price, deliveryStimate,
-category }) => (
+category, onAddItem }) => (
   <div className='col-xs-12 col-sm-6 col-lg-4'>
     <div className='card'>
       <Link to={`/details/${_id}`}>
@@ -21,7 +21,7 @@ category }) => (
       </div>
       <ul>
         <li className='list-gropu-item'>
-          <strong>{price} EUR</strong>
+          <strong>{price} &euro;</strong>
         </li>
         <li className='list-gropu-item'>
           <strong>Entrega: </strong>{deliveryStimate}
@@ -33,7 +33,10 @@ category }) => (
         </li>
       </ul>
       <div className='card-block'>
-        <button className='btn btn-primary'>
+        <button
+          className='btn btn-primary'
+          onClick={() => onAddItem({ _id, name, description, image, price, deliveryStimate, category })}
+        >
           <span className='fa fa-cart-plus' />Añadir al carrito
         </button>
       </div>
@@ -48,7 +51,8 @@ Product.propTypes = {
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   deliveryStimate: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired
+  category: PropTypes.string.isRequired,
+  onAddItem: PropTypes.func.isRequired
 }
 
 export default Product

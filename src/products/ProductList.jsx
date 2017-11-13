@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
-const ProductList = ({ loading, products }) => (
+const ProductList = ({ loading, products, onAddItem }) => (
   <section className='container'>
     {loading && <span>Cargando datos...</span>}
     <div className='row'>
@@ -11,6 +11,7 @@ const ProductList = ({ loading, products }) => (
           <Product
             key={product._id}
             {...product}
+            onAddItem={onAddItem}
           />
         )
       }
@@ -20,7 +21,8 @@ const ProductList = ({ loading, products }) => (
 
 ProductList.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  onAddItem: PropTypes.func.isRequired
 }
 
 export default ProductList
