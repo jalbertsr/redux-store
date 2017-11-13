@@ -19,7 +19,7 @@ export default function cartReducer (state = initialState.cart, action) {
         total: state.total + action.payload.price
       }
     case REMOVE_CART_ITEM: {
-      const searchItem = (element) => element.filter === action.payload._id
+      const searchItem = (element) => element._id === action.payload
       const item = state.items.find(searchItem)
       const index = state.items.findIndex(searchItem)
 
