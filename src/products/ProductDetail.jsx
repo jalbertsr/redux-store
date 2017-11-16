@@ -35,7 +35,7 @@ const ProductDetail = ({ loading, product, onAddItem }) => {
       </section>
     )
   }
-  return (<span>Cargando Datos...</span>)
+  return <span>Cargando Datos...</span>
 }
 
 ProductDetail.propTypes = {
