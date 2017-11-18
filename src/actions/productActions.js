@@ -10,10 +10,10 @@ import {
 } from './types'
 import API from '../services/dataService'
 
-export function fetchProductSuccess (products) {
+export function fetchProductSuccess (product) {
   return {
     type: FETCH_PRODUCTS_SUCCESS,
-    payload: products
+    payload: product
   }
 }
 
@@ -94,7 +94,7 @@ export function saveProduct (product) {
     })
     try {
       await API.products.save(product)
-      return dispatch(saveProductSucces())
+      return dispatch(saveProductsSucces(product))
     } catch (error) {
       return dispatch(saveProductFailure(error))
     }

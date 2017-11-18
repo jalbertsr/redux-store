@@ -40,7 +40,8 @@ const ProductDetail = ({ loading, product, onAddItem }) => {
 
 ProductDetail.propTypes = {
   product: PropTypes.object,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  onAddItem: PropTypes.func.isRequired
 }
 
 export default ProductDetail
